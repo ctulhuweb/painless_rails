@@ -1,5 +1,5 @@
 class Person < ApplicationRecord
-  belongs_to :organization, required: false, optional: true
+  belongs_to :organization
 
   validates_presence_of :username, :email, :address
 
