@@ -1,6 +1,9 @@
 class PersonService
-  def self.create(params)
+  def self.create(form, params)
     lat, long = Geocoder.coordinates(params["address"])
-    PersonMutator.create(person, params.merge({latitude: lat, longitude: long}))
+    PersonMutator.create(
+      params.merge({latitude: lat, longitude: long}), 
+      form.create_an_organization
+    )
   end
 end

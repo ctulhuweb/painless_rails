@@ -33,25 +33,9 @@ ActiveRecord::Schema.define(version: 2020_07_25_124102) do
     t.string "color_theme"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "organization_id"
+    t.index ["organization_id"], name: "index_persons_on_organization_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "address"
-    t.string "email"
-    t.string "email_confirmation"
-    t.boolean "terms_of_services"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "workplace"
-    t.string "profession"
-    t.boolean "moderator", default: false
-    t.boolean "ban", default: false
-    t.boolean "deleted", default: false
-    t.string "color"
-    t.bigint "organization_id", null: false
-    t.index ["organization_id"], name: "index_users_on_organization_id"
-  end
-
-  add_foreign_key "users", "organizations"
+  add_foreign_key "persons", "organizations"
 end
